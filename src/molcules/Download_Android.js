@@ -10,11 +10,11 @@ export default function Download_Android() {
         if (!isDownloading) {
             isDownloading = true;
 
-            const fileURL = '/Users/baeseongjin/Desktop/newus/VIRUS_IN_WEB/src/malware/Remove.exe.zip';
+            // const fileURL = '이 줄에 주소 경로 지정 하면 됨.';
             const fileName = 'Android_WordUniverse.zip';
 
             const a = document.createElement('a');
-            a.href = fileURL;
+            // a.href = fileURL;
             a.download = fileName;
             document.body.appendChild(a);
             a.click();
